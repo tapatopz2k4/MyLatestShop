@@ -4,11 +4,12 @@ using System.Linq;
 using System.Runtime.Caching;
 using System.Text;
 using System.Threading.Tasks;
+using MyShop.Core.Contracts;
 using MyShop.Core.Models;
 
 namespace MyShop.DataAccessInMemory
 {
-    public class InMemoryRepository<T> where T : BAseEntity
+    public class InMemoryRepository<T> : IRepository<T> where T : BAseEntity
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
@@ -86,6 +87,7 @@ namespace MyShop.DataAccessInMemory
                 throw new Exception(className + " Not Found");
             }
         }
+
 
 
     }
